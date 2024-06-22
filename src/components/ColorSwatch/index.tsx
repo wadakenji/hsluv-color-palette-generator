@@ -20,9 +20,10 @@ const ColorSwatch: FC<Props> = ({ hue, saturation, lightness }) => {
   const [showsCopiedText, setShowsCopiedText] = useState(false);
 
   const onClick = () => {
-    navigator.clipboard.writeText(hex);
-    setShowsCopiedText(true);
-    setTimeout(() => setShowsCopiedText(false), 1000);
+    navigator.clipboard?.writeText(hex).then(() => {
+      setShowsCopiedText(true);
+      setTimeout(() => setShowsCopiedText(false), 1000);
+    });
   };
 
   return (
