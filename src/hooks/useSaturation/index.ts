@@ -5,10 +5,13 @@ import {
 } from '../../utils/searchParams';
 import { INITIAL_SATURATION_VALUE } from '../../constants/initialValue';
 import { validateSaturationSearchParams } from '../../helpers/validateSearchParams';
+import { SATURATION_SEARCH_PARAMS_KEY } from '../../constants/searchParamsKey';
 
 export const useSaturation = () => {
   const initialSaturationValue = useMemo(() => {
-    const searchParamsSaturation = getSearchParamsValue('saturation');
+    const searchParamsSaturation = getSearchParamsValue(
+      SATURATION_SEARCH_PARAMS_KEY,
+    );
     if (validateSaturationSearchParams(searchParamsSaturation))
       return Number(searchParamsSaturation);
     else return INITIAL_SATURATION_VALUE;
@@ -23,7 +26,7 @@ export const useSaturation = () => {
   };
 
   const setSearchParamsSaturation = () =>
-    setSearchParams('saturation', String(saturation));
+    setSearchParams(SATURATION_SEARCH_PARAMS_KEY, String(saturation));
 
   return {
     saturation,

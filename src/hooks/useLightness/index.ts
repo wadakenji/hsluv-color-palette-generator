@@ -2,10 +2,13 @@ import { useMemo, useState } from 'react';
 import { getSearchParamsValue } from '../../utils/searchParams';
 import { validateLightnessSearchParams } from '../../helpers/validateSearchParams';
 import { INITIAL_LIGHTNESS_VALUE } from '../../constants/initialValue';
+import { LIGHTNESS_SEARCH_PARAMS_KEY } from '../../constants/searchParamsKey';
 
 export const useLightness = () => {
   const initialLightnessValue = useMemo(() => {
-    const searchParamsSaturation = getSearchParamsValue('lightness');
+    const searchParamsSaturation = getSearchParamsValue(
+      LIGHTNESS_SEARCH_PARAMS_KEY,
+    );
     if (validateLightnessSearchParams(searchParamsSaturation))
       return Number(searchParamsSaturation);
     else return INITIAL_LIGHTNESS_VALUE;
