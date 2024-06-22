@@ -27,7 +27,7 @@ const ColorSwatch: FC<Props> = ({ hue, saturation, lightness }) => {
 
   return (
     <div
-      className="relative w-24 h-24 md:w-36 md:h-36 flex justify-center items-center cursor-pointer transition hover:scale-105"
+      className="relative aspect-square color-swatch-width flex justify-center items-center cursor-pointer transition hover:scale-105"
       style={{ backgroundColor: hex }}
       onClick={onClick}
     >

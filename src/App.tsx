@@ -14,7 +14,7 @@ function App() {
   );
 
   return (
-    <main className="p-8">
+    <main className="py-8 container-padding-x w-full md:max-w-screen-md lg:max-w-screen-lg mx-auto">
       <h1 className="font-bold text-2xl text-center mb-8">
         HSLuv Color Palette Generator
       </h1>
@@ -31,7 +31,7 @@ function App() {
           </FieldSet>
         </div>
       </div>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap colors-wrapper-gap">
         {hues.map((h) => (
           <>
             <ColorSwatch
