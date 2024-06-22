@@ -1,10 +1,10 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
 import NumberInput from '../NumberInput';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
   value: number;
-  setValue: Dispatch<SetStateAction<number>>;
+  setValue: (value: number) => void;
   inputId?: string;
   className?: string;
 };

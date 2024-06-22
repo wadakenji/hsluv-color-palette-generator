@@ -1,16 +1,9 @@
-import {
-  Dispatch,
-  FC,
-  HTMLAttributes,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react';
+import { FC, HTMLAttributes, useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
   value: number;
-  setValue: Dispatch<SetStateAction<number>>;
+  setValue: (value: number) => void;
 } & Omit<HTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'onChange'>;
 
 const NumberInput: FC<Props> = ({
