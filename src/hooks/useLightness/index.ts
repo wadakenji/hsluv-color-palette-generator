@@ -1,5 +1,8 @@
 import { useMemo, useState } from 'react';
-import { getSearchParamsValue } from '../../utils/searchParams';
+import {
+  getSearchParamsValue,
+  setSearchParams,
+} from '../../utils/searchParams';
 import { validateLightnessSearchParams } from '../../helpers/validateSearchParams';
 import { INITIAL_LIGHTNESS_VALUE } from '../../constants/initialValue';
 import { LIGHTNESS_SEARCH_PARAMS_KEY } from '../../constants/searchParamsKey';
@@ -19,7 +22,10 @@ export const useLightness = () => {
   const setLightnessWrapper = (value: number) => {
     if (value > 100) setLightness(100);
     else if (value < 0) setLightness(0);
-    else setLightness(value);
+    else {
+      setLightness(value);
+      setSearchParams(LIGHTNESS_SEARCH_PARAMS_KEY, String(value));
+    }
   };
 
   return { lightness, setLightness: setLightnessWrapper };

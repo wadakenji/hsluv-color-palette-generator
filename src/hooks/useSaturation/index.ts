@@ -22,15 +22,14 @@ export const useSaturation = () => {
   const setSaturationWrapper = (value: number) => {
     if (value > 100) setSaturation(100);
     else if (value < 0) setSaturation(0);
-    else setSaturation(value);
+    else {
+      setSaturation(value);
+      setSearchParams(SATURATION_SEARCH_PARAMS_KEY, String(value));
+    }
   };
-
-  const setSearchParamsSaturation = () =>
-    setSearchParams(SATURATION_SEARCH_PARAMS_KEY, String(saturation));
 
   return {
     saturation,
     setSaturation: setSaturationWrapper,
-    setSearchParamsSaturation,
   };
 };
