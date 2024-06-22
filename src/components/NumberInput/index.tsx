@@ -23,7 +23,10 @@ const NumberInput: FC<Props> = ({ value, onChange, className, ...props }) => {
       <input
         {...props}
         type="number"
-        className={twMerge('p-2', className)}
+        className={twMerge(
+          'px-2 py-1 border border-gray-300 rounded',
+          className,
+        )}
         value={value || textValue}
         onChange={(e) => setTextValue(e.target.value)}
       />
