@@ -1,5 +1,6 @@
 import * as RadixSlider from '@radix-ui/react-slider';
 import { FC } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
   value: number;
@@ -7,10 +8,13 @@ type Props = {
   className?: string;
 };
 
-const Slider: FC<Props> = ({ value, onChange }) => {
+const Slider: FC<Props> = ({ value, onChange, className }) => {
   return (
     <RadixSlider.Root
-      className="relative flex items-center h-6 w-full px-1.5"
+      className={twMerge(
+        'relative flex items-center h-6 w-full px-1.5',
+        className,
+      )}
       defaultValue={[50]}
       value={[value]}
       onValueChange={([value]) => onChange(value)}
