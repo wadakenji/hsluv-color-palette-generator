@@ -35,14 +35,12 @@ function App() {
       </div>
       <div className="flex flex-wrap colors-wrapper-gap">
         {hues.map((h) => (
-          <>
-            <ColorSwatch
-              key={h}
-              hue={h}
-              saturation={saturation}
-              lightness={lightness}
-            />
-          </>
+          <ColorSwatch
+            key={h}
+            hue={h}
+            saturation={saturation}
+            lightness={lightness}
+          />
         ))}
       </div>
     </main>
