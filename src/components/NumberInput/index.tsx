@@ -27,7 +27,7 @@ const NumberInput: FC<Props> = ({ value, onChange, className, ...props }) => {
           'px-2 py-1 border border-gray-300 rounded text-center',
           className,
         )}
-        value={value || textValue}
+        value={value || (textValue === '' ? '' : value)}
         onChange={(e) => setTextValue(e.target.value)}
       />
     </>
