@@ -15,50 +15,50 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @layer components {
+  .container-padding-x {
+    @apply px-4;
+  }
+  .colors-wrapper-gap {
+    @apply gap-2;
+  }
+  .color-swatch-width {
+    width: calc((100% - 16px) / 3);
+  }
+
+  @media screen(sm) {
+    .color-swatch-width {
+      width: calc((100% - 24px) / 4);
+    }
+  }
+
+  @media screen(md) {
     .container-padding-x {
-        @apply px-4
+      @apply px-6;
     }
     .colors-wrapper-gap {
-        @apply gap-2
+      @apply gap-2.5;
     }
     .color-swatch-width {
-        width: calc((100% - 16px) / 3);
+      width: 136px;
     }
+  }
 
-    @media screen(sm) {
-        .color-swatch-width {
-            width: calc((100% - 24px) / 4);
-        }
+  @media screen(lg) {
+    .container-padding-x {
+      @apply px-8;
     }
-
-    @media screen(md) {
-        .container-padding-x {
-            @apply px-6
-        }
-        .colors-wrapper-gap {
-            @apply gap-2.5
-        }
-        .color-swatch-width {
-            width: 136px;
-        }
+    .colors-wrapper-gap {
+      @apply gap-3;
     }
-
-    @media screen(lg) {
-        .container-padding-x {
-            @apply px-8
-        }
-        .colors-wrapper-gap {
-            @apply gap-3
-        }
-        .color-swatch-width {
-            width: 150px;
-        }
+    .color-swatch-width {
+      width: 150px;
     }
+  }
 }
