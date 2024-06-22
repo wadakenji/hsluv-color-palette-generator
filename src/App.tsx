@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import ColorSwatch from './components/ColorSwatch';
 import FieldSet from './components/FieldSet';
+import InputSliderSet from './components/InputSliderSet';
+import InputButtonSet from './components/InputButtonSet';
 
 function App() {
   const [numberOfColors, setNumberOfColors] = useState(6);
@@ -16,28 +18,18 @@ function App() {
       <h1 className="font-bold text-2xl text-center mb-8">
         HSLuv Color Palette Generator
       </h1>
-      <div className="flex flex-wrap gap-4 mb-8">
-        <FieldSet label="Number of Colors">
-          <input
-            type="number"
-            value={numberOfColors}
-            onChange={(e) => setNumberOfColors(Number(e.target.value))}
-          />
+      <div className="flex flex-wrap gap-8 mb-8">
+        <FieldSet className="w-40" label="Number of Colors">
+          <InputButtonSet value={numberOfColors} onChange={setNumberOfColors} />
         </FieldSet>
-        <FieldSet label="Saturation">
-          <input
-            type="number"
-            value={saturation}
-            onChange={(e) => setSaturation(Number(e.target.value))}
-          />
-        </FieldSet>
-        <FieldSet label="Lightness">
-          <input
-            type="number"
-            value={lightness}
-            onChange={(e) => setLightness(Number(e.target.value))}
-          />
-        </FieldSet>
+        <div className="flex flex-wrap gap-4">
+          <FieldSet className="w-80" label="Saturation">
+            <InputSliderSet value={saturation} onChange={setSaturation} />
+          </FieldSet>
+          <FieldSet className="w-80" label="Lightness">
+            <InputSliderSet value={lightness} onChange={setLightness} />
+          </FieldSet>
+        </div>
       </div>
       <div>
         {hues.map((h) => (
