@@ -5,10 +5,11 @@ import { twMerge } from 'tailwind-merge';
 type Props = {
   value: number;
   onChange: (value: number) => void;
+  inputId?: string;
   className?: string;
 };
 
-const InputButtonSet: FC<Props> = ({ value, onChange, className }) => {
+const InputButtonSet: FC<Props> = ({ value, onChange, inputId, className }) => {
   const increment = () => onChange(value + 1);
   const decrement = () => onChange(value - 1);
 
@@ -22,6 +23,7 @@ const InputButtonSet: FC<Props> = ({ value, onChange, className }) => {
           -
         </button>
         <NumberInput
+          id={inputId}
           className="w-10 text-lg font-bold"
           value={value}
           onChange={onChange}

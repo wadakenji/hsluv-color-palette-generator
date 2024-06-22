@@ -6,14 +6,20 @@ import { twMerge } from 'tailwind-merge';
 type Props = {
   value: number;
   onChange: (value: number) => void;
+  inputId?: string;
   className?: string;
 };
 
-const InputSliderSet: FC<Props> = ({ value, onChange, className }) => {
+const InputSliderSet: FC<Props> = ({ value, onChange, inputId, className }) => {
   return (
     <>
       <span className={twMerge('flex gap-x-2 items-center', className)}>
-        <NumberInput className="w-14" value={value} onChange={onChange} />
+        <NumberInput
+          id={inputId}
+          className="w-14"
+          value={value}
+          onChange={onChange}
+        />
         <Slider value={value} onChange={onChange} />
       </span>
     </>

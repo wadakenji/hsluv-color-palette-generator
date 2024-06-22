@@ -3,20 +3,24 @@ import { twMerge } from 'tailwind-merge';
 
 type Props = {
   label: string;
+  labelFor?: string;
   className?: string;
 };
 
 const FieldSet: FC<PropsWithChildren<Props>> = ({
   label,
+  labelFor,
   className,
   children,
 }) => {
   return (
     <>
-      <label className={twMerge('max-w-full', className)}>
-        <span className="block font-bold text-lg mb-2">{label}</span>
+      <div className={twMerge('max-w-full', className)}>
+        <label htmlFor={labelFor} className="block font-bold text-lg mb-2">
+          {label}
+        </label>
         {children}
-      </label>
+      </div>
     </>
   );
 };

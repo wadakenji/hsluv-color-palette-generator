@@ -21,15 +21,31 @@ function App() {
         HSLuv Color Palette Generator
       </h1>
       <div className="flex flex-wrap gap-x-8 gap-y-4 mb-8">
-        <FieldSet className="w-40" label="Number of Colors">
-          <InputButtonSet value={numberOfColors} onChange={setNumberOfColors} />
+        <FieldSet
+          className="w-40"
+          label="Number of Colors"
+          labelFor="number-of-colors"
+        >
+          <InputButtonSet
+            value={numberOfColors}
+            onChange={setNumberOfColors}
+            inputId="number-of-colors"
+          />
         </FieldSet>
         <div className="flex flex-wrap gap-4">
-          <FieldSet className="w-80" label="Saturation">
-            <InputSliderSet value={saturation} onChange={setSaturation} />
+          <FieldSet className="w-80" label="Saturation" labelFor="saturation">
+            <InputSliderSet
+              value={saturation}
+              onChange={setSaturation}
+              inputId="saturation"
+            />
           </FieldSet>
-          <FieldSet className="w-80" label="Lightness">
-            <InputSliderSet value={lightness} onChange={setLightness} />
+          <FieldSet className="w-80" label="Lightness" labelFor="lightness">
+            <InputSliderSet
+              value={lightness}
+              onChange={setLightness}
+              inputId="lightness"
+            />
           </FieldSet>
         </div>
       </div>
