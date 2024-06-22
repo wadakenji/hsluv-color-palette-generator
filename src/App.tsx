@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ColorSwatch from './components/ColorSwatch';
+import FieldSet from './components/FieldSet';
 
 function App() {
   const [numberOfColors, setNumberOfColors] = useState(6);
@@ -15,31 +16,28 @@ function App() {
       <h1 className="font-bold text-2xl text-center mb-8">
         HSLuv Color Palette Generator
       </h1>
-      <div>
-        <label>
-          <span>Number of Colors</span>
+      <div className="flex flex-wrap gap-4 mb-8">
+        <FieldSet label="Number of Colors">
           <input
             type="number"
             value={numberOfColors}
             onChange={(e) => setNumberOfColors(Number(e.target.value))}
           />
-        </label>
-        <label>
-          <span>Saturation</span>
+        </FieldSet>
+        <FieldSet label="Saturation">
           <input
             type="number"
             value={saturation}
             onChange={(e) => setSaturation(Number(e.target.value))}
           />
-        </label>
-        <label>
-          <span>Lightness</span>
+        </FieldSet>
+        <FieldSet label="Lightness">
           <input
             type="number"
             value={lightness}
             onChange={(e) => setLightness(Number(e.target.value))}
           />
-        </label>
+        </FieldSet>
       </div>
       <div>
         {hues.map((h) => (
