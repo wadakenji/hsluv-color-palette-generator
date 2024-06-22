@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { throttle } from 'throttle-debounce';
 import {
   getSearchParamsValue,
   setSearchParams,
@@ -6,6 +7,10 @@ import {
 import { validateLightnessSearchParams } from '../../helpers/validateSearchParams';
 import { INITIAL_LIGHTNESS_VALUE } from '../../constants/initialValue';
 import { LIGHTNESS_SEARCH_PARAMS_KEY } from '../../constants/searchParamsKey';
+
+const setLightnessSearchParams = throttle(200, (value: string) =>
+  setSearchParams(LIGHTNESS_SEARCH_PARAMS_KEY, value),
+);
 
 export const useLightness = () => {
   const initialLightnessValue = useMemo(() => {
@@ -24,7 +29,7 @@ export const useLightness = () => {
     else if (value < 0) setLightness(0);
     else {
       setLightness(value);
-      setSearchParams(LIGHTNESS_SEARCH_PARAMS_KEY, String(value));
+      setLightnessSearchParams(String(value));
     }
   };
 

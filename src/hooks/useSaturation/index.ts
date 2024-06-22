@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { throttle } from 'throttle-debounce';
 import {
   getSearchParamsValue,
   setSearchParams,
@@ -6,6 +7,10 @@ import {
 import { INITIAL_SATURATION_VALUE } from '../../constants/initialValue';
 import { validateSaturationSearchParams } from '../../helpers/validateSearchParams';
 import { SATURATION_SEARCH_PARAMS_KEY } from '../../constants/searchParamsKey';
+
+const setSaturationSearchParams = throttle(200, (value: string) =>
+  setSearchParams(SATURATION_SEARCH_PARAMS_KEY, value),
+);
 
 export const useSaturation = () => {
   const initialSaturationValue = useMemo(() => {
@@ -24,7 +29,7 @@ export const useSaturation = () => {
     else if (value < 0) setSaturation(0);
     else {
       setSaturation(value);
-      setSearchParams(SATURATION_SEARCH_PARAMS_KEY, String(value));
+      setSaturationSearchParams(String(value));
     }
   };
 
