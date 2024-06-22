@@ -1,0 +1,3 @@
+export const INITIAL_SATURATION_VALUE = 50;
+export const INITIAL_LIGHTNESS_VALUE = 50;
+export const INITIAL_NUMBER_OF_COLORS = 6;

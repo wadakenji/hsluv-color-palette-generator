@@ -1,7 +1,20 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import {
+  getSearchParamsValue,
+  setSearchParams,
+} from '../../utils/searchParams';
+import { INITIAL_SATURATION_VALUE } from '../../constants/initialValue';
+import { validateSaturationSearchParams } from '../../helpers/validateSearchParams';
 
 export const useSaturation = () => {
-  const [saturation, setSaturation] = useState(50);
+  const initialSaturationValue = useMemo(() => {
+    const searchParamsSaturation = getSearchParamsValue('saturation');
+    if (validateSaturationSearchParams(searchParamsSaturation))
+      return Number(searchParamsSaturation);
+    else return INITIAL_SATURATION_VALUE;
+  }, []);
+
+  const [saturation, setSaturation] = useState(initialSaturationValue);
 
   const setSaturationWrapper = (value: number) => {
     if (value > 100) setSaturation(100);
@@ -9,5 +22,12 @@ export const useSaturation = () => {
     else setSaturation(value);
   };
 
-  return { saturation, setSaturation: setSaturationWrapper };
+  const setSearchParamsSaturation = () =>
+    setSearchParams('saturation', String(saturation));
+
+  return {
+    saturation,
+    setSaturation: setSaturationWrapper,
+    setSearchParamsSaturation,
+  };
 };
