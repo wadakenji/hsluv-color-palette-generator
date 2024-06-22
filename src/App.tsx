@@ -18,7 +18,7 @@ function App() {
       <h1 className="font-bold text-2xl text-center mb-8">
         HSLuv Color Palette Generator
       </h1>
-      <div className="flex flex-wrap gap-8 mb-8">
+      <div className="flex flex-wrap gap-x-8 gap-y-4 mb-8">
         <FieldSet className="w-40" label="Number of Colors">
           <InputButtonSet value={numberOfColors} onChange={setNumberOfColors} />
         </FieldSet>

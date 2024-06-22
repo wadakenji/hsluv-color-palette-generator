@@ -33,7 +33,7 @@ const ColorSwatch: FC<Props> = ({ hue, saturation, lightness }) => {
     >
       <span
         className={twJoin(
-          'absolute right-2 top-2 text-sm bg-white rounded-full py-px px-2 duration-300',
+          'absolute right-2 top-2 text-xs sm:text-sm bg-white rounded-full py-px px-2 duration-300',
           showsCopiedText ? 'opacity-100' : 'opacity-0',
         )}
       >
@@ -41,7 +41,7 @@ const ColorSwatch: FC<Props> = ({ hue, saturation, lightness }) => {
       </span>
       <span
         className={twJoin(
-          'font-bold',
+          'font-bold text-sm sm:text-base',
           lightness > 68 ? 'text-black' : 'text-white',
         )}
       >
