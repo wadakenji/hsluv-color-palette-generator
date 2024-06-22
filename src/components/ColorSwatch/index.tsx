@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Hsluv } from 'hsluv';
+import { twJoin } from 'tailwind-merge';
 
 type Props = {
   hue: number;
@@ -14,7 +15,26 @@ const ColorSwatch: FC<Props> = ({ hue, saturation, lightness }) => {
   hsluv.hsluv_l = lightness;
   hsluv.hsluvToHex();
 
-  return <div className="w-36 h-36">{hsluv.hex}</div>;
+  const hex = hsluv.hex;
+
+  const onClick = () => navigator.clipboard.writeText(hex);
+
+  return (
+    <div
+      className="w-24 h-24 md:w-36 md:h-36 flex justify-center items-center cursor-pointer transition hover:scale-105"
+      style={{ backgroundColor: hex }}
+      onClick={onClick}
+    >
+      <span
+        className={twJoin(
+          'font-bold',
+          lightness > 68 ? 'text-black' : 'text-white',
+        )}
+      >
+        {hex}
+      </span>
+    </div>
+  );
 };
 
 export default ColorSwatch;
