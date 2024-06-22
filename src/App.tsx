@@ -1,13 +1,15 @@
-import { useState } from 'react';
 import ColorSwatch from './components/ColorSwatch';
 import FieldSet from './components/FieldSet';
 import InputSliderSet from './components/InputSliderSet';
 import InputButtonSet from './components/InputButtonSet';
+import { useNumberOfColors } from './hooks/useNumberOfColors';
+import { useSaturation } from './hooks/useSaturation';
+import { useLightness } from './hooks/useLightness';
 
 function App() {
-  const [numberOfColors, setNumberOfColors] = useState(6);
-  const [saturation, setSaturation] = useState(50);
-  const [lightness, setLightness] = useState(50);
+  const { numberOfColors, setNumberOfColors } = useNumberOfColors();
+  const { saturation, setSaturation } = useSaturation();
+  const { lightness, setLightness } = useLightness();
 
   const hues = [...Array(numberOfColors)].map(
     (_, i) => (360 / numberOfColors) * i,
