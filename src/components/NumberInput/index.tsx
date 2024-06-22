@@ -4,7 +4,10 @@ import { twMerge } from 'tailwind-merge';
 type Props = {
   value: number;
   setValue: (value: number) => void;
-} & Omit<HTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'onChange'>;
+} & Omit<
+  HTMLAttributes<HTMLInputElement>,
+  'type' | 'value' | 'onChange' | 'onBlur' | 'onKeyDown'
+>;
 
 const NumberInput: FC<Props> = ({
   value: numberValue,
