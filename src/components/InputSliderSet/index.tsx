@@ -1,16 +1,16 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import NumberInput from '../NumberInput';
 import Slider from '../Slider';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
   value: number;
-  onChange: (value: number) => void;
+  setValue: Dispatch<SetStateAction<number>>;
   inputId?: string;
   className?: string;
 };
 
-const InputSliderSet: FC<Props> = ({ value, onChange, inputId, className }) => {
+const InputSliderSet: FC<Props> = ({ value, setValue, inputId, className }) => {
   return (
     <>
       <span className={twMerge('flex gap-x-2 items-center', className)}>
@@ -18,9 +18,9 @@ const InputSliderSet: FC<Props> = ({ value, onChange, inputId, className }) => {
           id={inputId}
           className="w-14"
           value={value}
-          onChange={onChange}
+          setValue={setValue}
         />
-        <Slider value={value} onChange={onChange} />
+        <Slider value={value} onChange={setValue} />
       </span>
     </>
   );

@@ -28,7 +28,7 @@ function App() {
         >
           <InputButtonSet
             value={numberOfColors}
-            onChange={setNumberOfColors}
+            setValue={setNumberOfColors}
             inputId="number-of-colors"
           />
         </FieldSet>
@@ -36,14 +36,14 @@ function App() {
           <FieldSet className="w-80" label="Saturation" labelFor="saturation">
             <InputSliderSet
               value={saturation}
-              onChange={setSaturation}
+              setValue={setSaturation}
               inputId="saturation"
             />
           </FieldSet>
           <FieldSet className="w-80" label="Lightness" labelFor="lightness">
             <InputSliderSet
               value={lightness}
-              onChange={setLightness}
+              setValue={setLightness}
               inputId="lightness"
             />
           </FieldSet>

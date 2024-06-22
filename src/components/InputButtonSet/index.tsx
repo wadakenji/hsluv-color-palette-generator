@@ -1,17 +1,17 @@
-import { FC } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import NumberInput from '../NumberInput';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
   value: number;
-  onChange: (value: number) => void;
+  setValue: Dispatch<SetStateAction<number>>;
   inputId?: string;
   className?: string;
 };
 
-const InputButtonSet: FC<Props> = ({ value, onChange, inputId, className }) => {
-  const increment = () => onChange(value + 1);
-  const decrement = () => onChange(value - 1);
+const InputButtonSet: FC<Props> = ({ value, setValue, inputId, className }) => {
+  const increment = () => setValue(value + 1);
+  const decrement = () => setValue(value - 1);
 
   return (
     <>
@@ -26,7 +26,7 @@ const InputButtonSet: FC<Props> = ({ value, onChange, inputId, className }) => {
           id={inputId}
           className="w-10 text-lg font-bold"
           value={value}
-          onChange={onChange}
+          setValue={setValue}
         />
         <button
           className="w-8 h-8 border border-gray-300 bg-white rounded-full"

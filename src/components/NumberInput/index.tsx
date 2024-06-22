@@ -1,22 +1,34 @@
-import { FC, HTMLAttributes, useEffect, useState } from 'react';
+import {
+  Dispatch,
+  FC,
+  HTMLAttributes,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
   value: number;
-  onChange: (value: number) => void;
+  setValue: Dispatch<SetStateAction<number>>;
 } & Omit<HTMLAttributes<HTMLInputElement>, 'type' | 'value' | 'onChange'>;
 
-const NumberInput: FC<Props> = ({ value, onChange, className, ...props }) => {
-  const [textValue, setTextValue] = useState(String(value));
+const NumberInput: FC<Props> = ({
+  value: numberValue,
+  setValue: setNumberValue,
+  className,
+  ...props
+}) => {
+  const [textValue, setTextValue] = useState(String(numberValue));
+
+  const onBlur = () => {
+    if (textValue === '') setNumberValue(0);
+    setNumberValue(Number(textValue));
+  };
 
   useEffect(() => {
-    if (textValue === '') onChange(0);
-
-    const numberValue = Number(textValue);
-    if (isNaN(numberValue)) return;
-
-    onChange(numberValue);
-  }, [textValue]);
+    setTextValue(String(numberValue));
+  }, [numberValue]);
 
   return (
     <>
@@ -27,8 +39,12 @@ const NumberInput: FC<Props> = ({ value, onChange, className, ...props }) => {
           'px-2 py-1 border border-gray-300 rounded text-center',
           className,
         )}
-        value={value || (textValue === '' ? '' : value)}
+        value={textValue}
         onChange={(e) => setTextValue(e.target.value)}
+        onBlur={onBlur}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') e.currentTarget.blur();
+        }}
       />
     </>
   );
